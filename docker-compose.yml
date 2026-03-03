@@ -1,0 +1,48 @@
+services:
+
+  db:
+    image: postgres:15
+    container_name: leonforge_db
+    restart: always 
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  api:
+    build: ./api
+    container_name: leonforge_api
+    restart: always
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+    command: >
+      sh -c "
+      until pg_isready -h db -p 5432; do
+        echo 'Waiting for postgres...';
+        sleep 2;
+      done &&
+      python manage.py migrate &&
+      gunicorn --bind 0.0.0.0:8000  leon_forge_design.wsgi:application
+      "
+# docker compose exec api python manage.py makemigrations 
+# docker compose exec api python manage.py migrate
+
+  
+  # frontend:
+  #   build: ./frontend
+  #   container_name: market_frontend
+  #   restart: always
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - api
+
+volumes:
+  postgres_data:
+
+
+
+
