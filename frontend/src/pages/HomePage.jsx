@@ -1,36 +1,48 @@
+import Hero from "../components/Hero";
 import "./HomePage.css";
 
 function HomePage() {
+  const services = [
+  {
+    title: "Event Planning",
+    img: "https://images.pexels.com/photos/2306281/pexels-photo-2306281.jpeg",
+    description: "Planificación integral de eventos de principio a fin.",
+  },
+  {
+    title: "Design Services",
+    img: "https://images.pexels.com/photos/10751439/pexels-photo-10751439.jpeg",
+    description: "Concepto visual, branding y diseño de experiencias.",
+  },
+  {
+    title: "Production Management",
+    img: "https://images.pexels.com/photos/19368581/pexels-photo-19368581.jpeg",
+    description: "Coordinación técnica, logística y ejecución en sitio.",
+  },
+];
+
   return (
     <div className="home-page">
-      <div className="hero-section">
-        <h1>Welcome to Leon Forge Design</h1>
-        <p>Creating unforgettable events and experiences</p>
-      </div>
+      <Hero />
       <div className="content-section">
-        <h2>Our Services</h2>
+        <section className="content-section" aria-labelledby="services-title">
+        <h2 id="services-title">Our Services</h2>
 
         <ul className="services-list">
-          <li>Event Planning</li>
-          <li>Design Services</li>
-          <li>Production Management</li>
+          {services.map((service) => (
+            <li
+              key={service.title}
+              className="service-card"
+              style={{ "--card-bg": `url(${service.img})` }}
+            >
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </li>
+          ))}
         </ul>
+      </section>
 
-
-        <ul className="services-links">
-            <li>
-                <a href="/event-planning">Event Planning</a>
-            </li>
-            <li>
-                <a href="/design-services">Design Services</a>
-            </li>
-            <li>
-                <a href="/production-management">Production Management</a>
-            </li>
-        </ul>
-
-        <hr className="sep"/>
-        <p>We specialize in event planning, design, and production.</p>
+        
+        
       </div>
     </div>
   );
