@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Footer.css";
+import { FaInstagram, FaFacebookF, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 function Footer() {
   return (
@@ -7,13 +8,25 @@ function Footer() {
       <div className="footer-container">
         <div className="follow-us-section">
           <h3>Follow Us</h3>
-          <p>Facebook: facebook.com/leonforge</p>
-          <p>Twitter: twitter.com/leonforge</p>
-          <p>Instagram: instagram.com/leonforge</p>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer">
+            <FaInstagram />
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noreferrer">
+            <FaFacebookF />
+          </a>
+          <a href="https://x.com" target="_blank" rel="noreferrer">
+            <FaXTwitter />
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+            <FaLinkedinIn />
+          </a>
         </div>
 
         <div className="links-section">
           <h4>Links</h4>
+
+          <div className="links">
+
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -28,6 +41,7 @@ function Footer() {
               <Link to="/contact">Contact</Link>
             </li>
           </ul>
+          </div>
         </div>
 
         <div className="contact-section">
