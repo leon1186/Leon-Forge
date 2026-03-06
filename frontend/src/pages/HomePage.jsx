@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import Hero from "../components/Hero";
 import "./HomePage.css";
+import NotesSection from "../components/NotesSection";
 
 function HomePage() {
   const services = [
@@ -64,6 +65,8 @@ function HomePage() {
           ))}
         </ul>
       </section>
+
+      <NotesSection />    
     </div>
   );
 }
