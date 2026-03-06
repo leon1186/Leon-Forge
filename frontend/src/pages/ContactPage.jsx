@@ -1,39 +1,243 @@
+import { useState } from "react";
 import "./ContactPage.css";
-import {useState} from 'react'  
 
 function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    eventType: "",
+    dateTimeLocation: "",
+    guests: "",
+    indoorsOutdoors: "",
+    boothHours: "",
+    printsOrDigital: "",
+    customDesignsBranding: "",
+    props: "",
+    backdrop: "",
+    boothSpotPower: "",
+    contactPerson: "",
+    bundlePackages: "",
+  });
 
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        message: ""
-    });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((previousData) => ({
+      ...previousData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Inquiry submitted:", formData);
+  };
 
   return (
-    <div className="contact-page">
-      <h1>Contact Us</h1>
-      <p>
-        Have questions or want to get in touch? Fill out the form below and
-        we'll get back to you as soon as possible.
-      </p>
-      <div className="form-container">
-        <form className="contact-form">
-          <div className="form-field">
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" required />
+    <section className="contact-page">
+      <div className="contact-shell">
+        <span className="contact-kicker">Event Inquiry</span>
+        <h1>Contact Me</h1>
+        <p>
+          Tell us about your event and we will reach out with options that fit
+          your vision.
+        </p>
+        <span className="contact-meta">All fields are required.</span>
+
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <div className="form-field form-field--half">
+            <label htmlFor="name">Your name *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
           </div>
-          <div className="form-field">
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" required />
+
+          <div className="form-field form-field--half">
+            <label htmlFor="email">Email address *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
           </div>
-          <div className="form-field">
-            <label htmlFor="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+
+          <div className="form-field form-field--full">
+            <label htmlFor="eventType">
+              What type of event is it? (wedding, birthday, corporate, etc.) *
+            </label>
+            <input
+              type="text"
+              id="eventType"
+              name="eventType"
+              value={formData.eventType}
+              onChange={handleChange}
+              required
+            />
           </div>
-          <button type="submit">Send Message</button>
+
+          <div className="form-field form-field--full">
+            <label htmlFor="dateTimeLocation">
+              What&apos;s the date, time, and location? *
+            </label>
+            <textarea
+              id="dateTimeLocation"
+              name="dateTimeLocation"
+              rows="3"
+              value={formData.dateTimeLocation}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field form-field--half">
+            <label htmlFor="guests">How many guests are you expecting? *</label>
+            <input
+              type="number"
+              min="1"
+              id="guests"
+              name="guests"
+              value={formData.guests}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field form-field--half">
+            <label htmlFor="indoorsOutdoors">
+              Is the event indoors, outdoors? *
+            </label>
+            <input
+              type="text"
+              id="indoorsOutdoors"
+              name="indoorsOutdoors"
+              value={formData.indoorsOutdoors}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field form-field--half">
+            <label htmlFor="boothHours">
+              How many hours would you like the booth running? *
+            </label>
+            <input
+              type="text"
+              id="boothHours"
+              name="boothHours"
+              value={formData.boothHours}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field form-field--full">
+            <label htmlFor="printsOrDigital">
+              Would you like prints or digital sharing (text/email), or both? *
+            </label>
+            <textarea
+              id="printsOrDigital"
+              name="printsOrDigital"
+              rows="3"
+              value={formData.printsOrDigital}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field form-field--full">
+            <label htmlFor="customDesignsBranding">
+              Do you want custom photo strip designs or event branding? *
+            </label>
+            <textarea
+              id="customDesignsBranding"
+              name="customDesignsBranding"
+              rows="3"
+              value={formData.customDesignsBranding}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field form-field--half">
+            <label htmlFor="props">
+              Do you want props (funny hats, glasses, signs, etc.)? *
+            </label>
+            <input
+              type="text"
+              id="props"
+              name="props"
+              value={formData.props}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field form-field--half">
+            <label htmlFor="backdrop">Would you like a backdrop? *</label>
+            <input
+              type="text"
+              id="backdrop"
+              name="backdrop"
+              value={formData.backdrop}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field form-field--full">
+            <label htmlFor="boothSpotPower">
+              Do you have a designated spot for the booth with power access? *
+            </label>
+            <textarea
+              id="boothSpotPower"
+              name="boothSpotPower"
+              rows="3"
+              value={formData.boothSpotPower}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field form-field--half">
+            <label htmlFor="contactPerson">
+              Who&apos;s the point of contact on the event day? *
+            </label>
+            <input
+              type="text"
+              id="contactPerson"
+              name="contactPerson"
+              value={formData.contactPerson}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field form-field--full">
+            <label htmlFor="bundlePackages">
+              Would you like bundle packages (booth + photography + video,
+              etc.)? *
+            </label>
+            <textarea
+              id="bundlePackages"
+              name="bundlePackages"
+              rows="3"
+              value={formData.bundlePackages}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <button type="submit">Send inquiry</button>
         </form>
       </div>
-    </div>
+    </section>
   );
 }
 
