@@ -32,6 +32,9 @@ function Footer() {
               <Link to="/">Home</Link>
             </li>
             <li>
+              <Link  to="/photo-booth">Photo Booth</Link>
+            </li>
+            <li>
               <Link to="/events">Events</Link>
             </li>
             <li>

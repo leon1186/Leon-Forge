@@ -64,9 +64,17 @@ function EventsPage() {
       date: "2025-03-21",
     },
   ];
+
   return (
-    <div>
-      EventsPage
+    <section className="event-page" aria-labelledby="events-heading">
+      <header className="events-header">
+        <p className="events-eyebrow">Calendario</p>
+        <h1 id="events-heading">Proximos Eventos</h1>
+        <p className="events-intro">
+          Descubre nuestras celebraciones, experiencias y encuentros especiales.
+        </p>
+      </header>
+
       <div className="events-container">
         <div className="events-grid">
           {events.map((event) => (
@@ -74,7 +82,7 @@ function EventsPage() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
