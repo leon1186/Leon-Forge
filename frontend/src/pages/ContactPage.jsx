@@ -6,7 +6,9 @@ function ContactPage() {
     name: "",
     email: "",
     eventType: "",
-    dateTimeLocation: "",
+    eventDate: "",
+    eventTime: "",
+    location: "",
     guests: "",
     indoorsOutdoors: "",
     boothHours: "",
@@ -29,7 +31,13 @@ function ContactPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Inquiry submitted:", formData);
+
+    const inquiryPayload = {
+      ...formData,
+      event_date: formData.eventDate,
+    };
+
+    console.log("Inquiry submitted:", inquiryPayload);
   };
 
   return (
@@ -82,15 +90,37 @@ function ContactPage() {
             />
           </div>
 
+          <div className="form-field form-field--half">
+            <label htmlFor="eventDate">What&apos;s the event date? *</label>
+            <input
+              type="date"
+              id="eventDate"
+              name="eventDate"
+              value={formData.eventDate}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field form-field--half">
+            <label htmlFor="eventTime">What time does it start? *</label>
+            <input
+              type="time"
+              id="eventTime"
+              name="eventTime"
+              value={formData.eventTime}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
           <div className="form-field form-field--full">
-            <label htmlFor="dateTimeLocation">
-              What&apos;s the date, time, and location? *
-            </label>
-            <textarea
-              id="dateTimeLocation"
-              name="dateTimeLocation"
-              rows="3"
-              value={formData.dateTimeLocation}
+            <label htmlFor="location">Where is the event location? *</label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              value={formData.location}
               onChange={handleChange}
               required
             />
